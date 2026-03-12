@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Stephen Suryawanshi | CEO & Digital Growth Executive</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --gold-dim: #8B6914;
+    --bg: #090909;
+    --bg2: #111111;
+    --bg3: #181818;
+    --text: #E8E0D0;
+    --muted: #7A7060;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    padding: 60px 24px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 50%, #1a1200 0%, var(--bg) 70%);
+  }
+
+  .hero-lines {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    animation: gridPulse 8s ease-in-out infinite;
+  }
+
+  @keyframes gridPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+  }
+
+  .avatar-ring {
+    position: relative;
+    width: 160px; height: 160px;
+    margin-bottom: 36px;
+    z-index: 2;
+    animation: fadeUp 1s ease both;
+  }
+
+  .avatar-ring::before, .avatar-ring::after {
+    content: '';
+    position: absolute; inset: -8px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+  }
+
+  .avatar-ring::before {
+    border-top-color: var(--gold);
+    border-right-color: var(--gold);
+    animation: spin 6s linear infinite;
+  }
+
+  .avatar-ring::after {
+    border-bottom-color: var(--gold-dim);
+    border-left-color: var(--gold-dim);
+    animation: spin 10s linear infinite reverse;
+  }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .avatar-circle {
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2a1f00, #1a1200);
+    border: 2px solid var(--gold-dim);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 52px;
+    font-weight: 900;
+    color: var(--gold);
+    text-shadow: 0 0 30px rgba(201,168,76,0.5);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .avatar-circle::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(201,168,76,0.1) 0%, transparent 60%);
+  }
+
+  .hero-eyebrow {
+    z-index: 2;
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 6px;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero-name {
+    z-index: 2;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 8vw, 88px);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -2px;
+    background: linear-gradient(135deg, #fff 30%, var(--gold) 70%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeUp 1s 0.35s ease both;
+    margin-bottom: 20px;
+  }
+
+  .hero-title {
+    z-index: 2;
+    font-size: clamp(13px, 2vw, 16px);
+    font-weight: 400;
+    color: var(--muted);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: fadeUp 1s 0.5s ease both;
+    margin-bottom: 40px;
+  }
+
+  .hero-stats {
+    z-index: 2;
+    display: flex;
+    gap: 48px;
+    flex-wrap: wrap;
+    justify-content: center;
+    animation: fadeUp 1s 0.65s ease both;
+    margin-bottom: 48px;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .hero-divider {
+    z-index: 2;
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 0 auto 48px;
+    animation: fadeUp 1s 0.8s ease both;
+  }
+
+  .scroll-hint {
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeUp 1s 1s ease both;
+  }
+
+  .scroll-hint span {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── VIDEO SCRIPT SECTION ── */
+  #script {
+    padding: 100px 24px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 5px;
+    font-size: 12px;
+    color: var(--gold);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--gold-dim), transparent);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 5vw, 52px);
+    font-weight: 700;
+    margin-bottom: 48px;
+    line-height: 1.1;
+  }
+
+  .script-card {
+    background: var(--bg2);
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 2px;
+    padding: 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .script-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(180deg, var(--gold), var(--gold-dim));
+  }
+
+  .script-card::after {
+    content: '"';
+    position: absolute;
+    top: 16px; right: 32px;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    color: rgba(201,168,76,0.05);
+    line-height: 1;
+  }
+
+  .script-segment {
+    margin-bottom: 36px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+
+  .script-segment:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .segment-tag {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    background: rgba(201,168,76,0.1);
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 1px;
+  }
+
+  .script-text {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #C8C0B0;
+    font-weight: 300;
+  }
+
+  .script-text strong {
+    color: var(--gold-light);
+    font-weight: 500;
+  }
+
+  /* ── EXPERIENCE ── */
+  #experience {
+    padding: 100px 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .timeline {
+    position: relative;
+    padding-left: 32px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, var(--gold), transparent);
+  }
+
+  .job {
+    position: relative;
+    margin-bottom: 64px;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.6s ease;
+  }
+
+  .job.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  .job::before {
+    content: '';
+    position: absolute;
+    left: -36px; top: 6px;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 12px rgba(201,168,76,0.5);
+  }
+
+  .job-header {
+    margin-bottom: 20px;
+  }
+
+  .job-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .job-meta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .job-company {
+    font-size: 14px;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  .job-period {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    font-family: 'Bebas Neue', sans-serif;
+  }
+
+  .job-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .job-points li {
+    font-size: 14px;
+    color: #9A9080;
+    line-height: 1.7;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .job-points li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--gold-dim);
+    font-size: 10px;
+    top: 2px;
+  }
+
+  .job-points li strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* ── ACHIEVEMENTS ── */
+  #achievements {
+    padding: 100px 24px;
+    background: var(--bg2);
+  }
+
+  .achievements-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2px;
+    margin-top: 48px;
+  }
+
+  .metric-card {
+    background: var(--bg3);
+    padding: 40px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+  }
+
+  .metric-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .metric-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+  }
+
+  .metric-card:hover::after { transform: scaleX(1); }
+
+  .metric-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .metric-desc {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    line-height: 1.5;
+  }
+
+  /* ── SKILLS ── */
+  #skills {
+    padding: 100px 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .skill-group {
+    background: var(--bg2);
+    border: 1px solid rgba(201,168,76,0.1);
+    padding: 32px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+  }
+
+  .skill-group.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .skill-group-title {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 3px;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .skill-tag {
+    font-size: 12px;
+    padding: 5px 12px;
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.15);
+    color: #B0A890;
+    border-radius: 1px;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+  }
+
+  .skill-tag:hover {
+    background: rgba(201,168,76,0.12);
+    color: var(--gold-light);
+    border-color: rgba(201,168,76,0.3);
+  }
+
+  /* ── GEOGRAPHY ── */
+  #geography {
+    padding: 100px 24px;
+    background: var(--bg2);
+  }
+
+  .geo-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .geo-regions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 48px;
+  }
+
+  .geo-chip {
+    padding: 12px 28px;
+    border: 1px solid rgba(201,168,76,0.2);
+    background: var(--bg3);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    opacity: 0;
+    transform: scale(0.9);
+    transition: all 0.4s ease;
+  }
+
+  .geo-chip.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* ── CTA ── */
+  #cta {
+    padding: 120px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #cta::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 70%);
+  }
+
+  .cta-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 56px);
+    font-weight: 900;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-sub {
+    color: var(--muted);
+    font-size: 16px;
+    margin-bottom: 48px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-btn {
+    padding: 14px 36px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 3px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+  }
+
+  .cta-btn.primary {
+    background: var(--gold);
+    color: #090909;
+  }
+
+  .cta-btn.primary:hover {
+    background: var(--gold-light);
+    box-shadow: 0 0 30px rgba(201,168,76,0.3);
+    transform: translateY(-2px);
+  }
+
+  .cta-btn.secondary {
+    background: transparent;
+    color: var(--gold);
+    border: 1px solid var(--gold);
+  }
+
+  .cta-btn.secondary:hover {
+    background: rgba(201,168,76,0.08);
+    transform: translateY(-2px);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 2px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(9,9,9,0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  @media (max-width: 600px) {
+    .nav-links { display: none; }
+    .script-card { padding: 28px 24px; }
+    .hero-stats { gap: 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">SS</div>
+  <ul class="nav-links">
+    <li><a href="#script">Script</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#achievements">Results</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+
+  <div class="avatar-ring">
+    <div class="avatar-circle">SS</div>
+  </div>
+
+  <div class="hero-eyebrow">Chief Executive Officer &nbsp;·&nbsp; Performance Media</div>
+  <h1 class="hero-name">Stephen<br/>Suryawanshi</h1>
+  <p class="hero-title">Digital Growth &amp; Affiliate Marketing Executive &nbsp;|&nbsp; APAC · MEA · GCC</p>
+
+  <div class="hero-stats">
+    <div class="stat">
+      <span class="stat-num">$1.7B+</span>
+      <span class="stat-label">Cumulative Revenue</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">$40M</span>
+      <span class="stat-label">Quarterly Campaign</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">230+</span>
+      <span class="stat-label">Active Partners</span>
+    </div>
+    <div class="stat">
+      <span class="stat-num">15+</span>
+      <span class="stat-label">Years Experience</span>
+    </div>
+  </div>
+
+  <div class="hero-divider"></div>
+
+  <div class="scroll-hint">
+    <span>Scroll to explore</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- VIDEO SCRIPT -->
+<section id="script">
+  <div class="section-label">AI Avatar Video Script</div>
+  <h2 class="section-title">Your Story,<br/><em>In Your Voice</em></h2>
+
+  <div class="script-card">
+
+    <div class="script-segment">
+      <span class="segment-tag">Opening — 0:00 – 0:12</span>
+      <p class="script-text">
+        Hi, I'm <strong>Stephen Suryawanshi</strong> — a digital media executive with over <strong>15 years</strong> of experience building and scaling performance-led businesses across <strong>Asia, the Middle East, and the Gulf</strong>.
+      </p>
+    </div>
+
+    <div class="script-segment">
+      <span class="segment-tag">The Hook — 0:12 – 0:30</span>
+      <p class="script-text">
+        In my career, I've overseen networks that generated <strong>over $1.7 billion in affiliate revenue</strong> in just two years. I've managed a single enterprise partnership — Samsung through KIT Global — that was producing <strong>$8 million every month</strong>. And as CEO of Shoogloo Network, I held P&L accountability for <strong>$40 million in quarterly campaign activity</strong>.
+      </p>
+    </div>
+
+    <div class="script-segment">
+      <span class="segment-tag">What I Do — 0:30 – 0:55</span>
+      <p class="script-text">
+        My expertise sits at the intersection of <strong>affiliate marketing, performance media, and executive leadership</strong>. I build partner ecosystems from the ground up — scaling from 50 to over 230 active partners. I design commercial frameworks that optimize revenue across multi-channel networks. And I lead organizations through transformation, ensuring <strong>profitable growth in complex, competitive markets</strong>.
+      </p>
+    </div>
+
+    <div class="script-segment">
+      <span class="segment-tag">The Proof — 0:55 – 1:15</span>
+      <p class="script-text">
+        I've worked with global brands like <strong>Emirates, Qatar Airways, Apple, TataNeu, and Kotak811</strong>. I've built performance media operations across <strong>India, Southeast Asia, GCC and MENA</strong>. And I've reduced campaign attrition to as low as <strong>2%</strong> through structured delivery excellence and partner enablement programs.
+      </p>
+    </div>
+
+    <div class="script-segment">
+      <span class="segment-tag">The Differentiator — 1:15 – 1:35</span>
+      <p class="script-text">
+        What sets me apart? I'm not just a strategist — I'm a <strong>builder</strong>. I've started from zero, scaled to market-leading, and done it across multiple geographies and business cultures. I combine <strong>board-level strategic thinking</strong> with deep, hands-on commercial execution. I speak the language of revenue, of data, and of people.
+      </p>
+    </div>
+
+    <div class="script-segment">
+      <span class="segment-tag">The Ask — 1:35 – 1:50</span>
+      <p class="script-text">
+        If you're looking for a <strong>growth executive, a strategic advisor, or a commercial leader</strong> who can drive measurable outcomes at scale — I'd love to talk. Reach me at <strong>suryawanshi.stephen@googlemail.com</strong> or connect with me on LinkedIn. Let's build something exceptional together.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career Journey</div>
+  <h2 class="section-title">15+ Years of<br/><em>Measurable Impact</em></h2>
+
+  <div class="timeline">
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-role">Digital Media Consultant</div>
+        <div class="job-meta">
+          <span class="job-company">The Digital Tree, Dubai (Remote)</span>
+          <span class="job-period">Oct 2025 – Feb 2026</span>
+        </div>
+      </div>
+      <ul class="job-points">
+        <li>Advised enterprise clients on <strong>performance media transformation</strong> and programmatic ecosystem strategy</li>
+        <li>Developed media planning frameworks and budget allocation models aligned to C-suite KPIs</li>
+        <li>Facilitated executive alignment across client leadership, activation teams and analytics stakeholders</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-role">Chief Executive Officer</div>
+        <div class="job-meta">
+          <span class="job-company">Shoogloo Network (Optimise Media), India</span>
+          <span class="job-period">2023 – 2024</span>
+        </div>
+      </div>
+      <ul class="job-points">
+        <li>Full P&L accountability — delivered <strong>$40M in quarterly cross-channel campaign activity</strong></li>
+        <li>Led board-level reporting and stakeholder communication across 50+ global brand partnerships</li>
+        <li>Reduced campaign attrition to <strong>2%</strong> through structured delivery excellence programs</li>
+        <li>Built cross-functional leadership teams spanning strategy, operations, client services and analytics</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-role">Global Affiliate Head</div>
+        <div class="job-meta">
+          <span class="job-company">KIT Global</span>
+          <span class="job-period">2022 – 2023</span>
+        </div>
+      </div>
+      <ul class="job-points">
+        <li>Managed flagship <strong>Samsung/Cheil partnership generating $8M+ monthly revenue</strong> across APAC & MEA</li>
+        <li>Built centralized KPI dashboards and performance forecasting infrastructure</li>
+        <li>Standardized campaign workflows across distributed teams spanning multiple markets and time zones</li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-role">Director → Head of Partner Network</div>
+        <div class="job-meta">
+          <span class="job-company">Admitad Media</span>
+          <span class="job-period">2016 – 2022</span>
+        </div>
+      </div>
+      <ul class="job-points">
+        <li>Scaled partner network from <strong>50 to 230+ active partners</strong>, generating <strong>$1.7B+ cumulative revenue</strong></li>
+        <li>Managed premium partnerships: TataNeu, Qatar Airways, Emirates, Apple, Kotak811</li>
+        <li>Designed tiered commission frameworks and commercial models for multi-brand operations</li>
+        <li>Positioned Admitad as <strong>Asia's leading affiliate performance platform</strong></li>
+      </ul>
+    </div>
+
+    <div class="job">
+      <div class="job-header">
+        <div class="job-role">Earlier Career</div>
+        <div class="job-meta">
+          <span class="job-company">Infibeam · FirstCry · Mike Sierra Healthcare · Darshan Softech</span>
+          <span class="job-period">Pre-2016</span>
+        </div>
+      </div>
+      <ul class="job-points">
+        <li>Progressive roles across <strong>affiliate marketing, digital marketing and performance analytics</strong></li>
+        <li>Built foundational commercial and analytical expertise that underpins executive decision-making today</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="achievements-inner">
+    <div class="section-label">Commercial Achievements</div>
+    <h2 class="section-title">Numbers That<br/><em>Tell the Story</em></h2>
+
+    <div class="metrics-grid">
+      <div class="metric-card">
+        <span class="metric-value">$1.7B+</span>
+        <span class="metric-desc">Cumulative Network Revenue<br/>(Admitad, 2 years)</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-value">$40M</span>
+        <span class="metric-desc">Quarterly Campaign Revenue<br/>(Shoogloo, CEO)</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-value">$8M+</span>
+        <span class="metric-desc">Monthly Partnership Revenue<br/>(Samsung / KIT Global)</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-value">230+</span>
+        <span class="metric-desc">Active Partners Scaled<br/>from 50 to 230+</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-value">2%</span>
+        <span class="metric-desc">Campaign Attrition Rate<br/>Achieved at Shoogloo</span>
+      </div>
+      <div class="metric-card">
+        <span class="metric-value">15+</span>
+        <span class="metric-desc">Years in Performance<br/>& Affiliate Marketing</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Core Competencies</div>
+  <h2 class="section-title">What I Bring<br/><em>to the Table</em></h2>
+
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Revenue & Commercial</div>
+      <div class="skill-tags">
+        <span class="skill-tag">P&L Ownership</span>
+        <span class="skill-tag">Revenue Architecture</span>
+        <span class="skill-tag">Commission Frameworks</span>
+        <span class="skill-tag">Pricing Strategy</span>
+        <span class="skill-tag">Budget Governance</span>
+        <span class="skill-tag">Contract Negotiation</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Affiliate & Performance Media</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Affiliate Network Management</span>
+        <span class="skill-tag">CPA / CPS / CPL</span>
+        <span class="skill-tag">Programmatic</span>
+        <span class="skill-tag">Paid Search</span>
+        <span class="skill-tag">Publisher Relations</span>
+        <span class="skill-tag">Attribution Modelling</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Leadership & Strategy</div>
+      <div class="skill-tags">
+        <span class="skill-tag">CEO / Executive Leadership</span>
+        <span class="skill-tag">Board Reporting</span>
+        <span class="skill-tag">Go-to-Market Strategy</span>
+        <span class="skill-tag">Org Design</span>
+        <span class="skill-tag">Change Management</span>
+        <span class="skill-tag">Talent Development</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Partnerships & Ecosystem</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Fortune 500 Partnerships</span>
+        <span class="skill-tag">Enterprise Alliances</span>
+        <span class="skill-tag">Partner Enablement</span>
+        <span class="skill-tag">Network Scaling</span>
+        <span class="skill-tag">Stakeholder Management</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Data & Analytics</div>
+      <div class="skill-tags">
+        <span class="skill-tag">KPI Architecture</span>
+        <span class="skill-tag">Executive Dashboards</span>
+        <span class="skill-tag">Forecasting</span>
+        <span class="skill-tag">Incrementality</span>
+        <span class="skill-tag">Data-Led Decision Making</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Markets & Verticals</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Fintech</span>
+        <span class="skill-tag">Travel</span>
+        <span class="skill-tag">E-Commerce</span>
+        <span class="skill-tag">Retail</span>
+        <span class="skill-tag">Healthcare</span>
+        <span class="skill-tag">BFSI</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GEOGRAPHY -->
+<section id="geography">
+  <div class="geo-inner">
+    <div class="section-label">Geographic Footprint</div>
+    <h2 class="section-title">Built for<br/><em>Global Markets</em></h2>
+    <div class="geo-regions">
+      <div class="geo-chip">India</div>
+      <div class="geo-chip">Southeast Asia</div>
+      <div class="geo-chip">APAC</div>
+      <div class="geo-chip">GCC</div>
+      <div class="geo-chip">MENA</div>
+      <div class="geo-chip">Dubai</div>
+      <div class="geo-chip">Australia</div>
+      <div class="geo-chip">Singapore</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <h2 class="cta-title">Ready to Drive<br/><em>Revenue at Scale?</em></h2>
+  <p class="cta-sub">Open to CEO, COO, SVP/VP roles &nbsp;·&nbsp; Advisory &nbsp;·&nbsp; Strategic Partnerships</p>
+  <div class="cta-links">
+    <a href="mailto:suryawanshi.stephen@googlemail.com" class="cta-btn primary">Send an Email</a>
+    <a href="https://linkedin.com/in/suryawanshi" target="_blank" class="cta-btn secondary">LinkedIn Profile</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>STEPHEN SURYAWANSHI &nbsp;·&nbsp; GURUGRAM, INDIA &nbsp;·&nbsp; +91 78747 08158</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, entry.target.dataset.delay || 0);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.job').forEach((el, i) => {
+    el.dataset.delay = i * 100;
+    observer.observe(el);
+  });
+
+  document.querySelectorAll('.metric-card').forEach((el, i) => {
+    el.dataset.delay = i * 80;
+    observer.observe(el);
+  });
+
+  document.querySelectorAll('.skill-group').forEach((el, i) => {
+    el.dataset.delay = i * 80;
+    observer.observe(el);
+  });
+
+  document.querySelectorAll('.geo-chip').forEach((el, i) => {
+    el.dataset.delay = i * 60;
+    observer.observe(el);
+  });
+
+  // Animated counter for hero stats
+  function animateCounter(el, target, prefix = '', suffix = '') {
+    const isDecimal = target.includes('.');
+    const numTarget = parseFloat(target.replace(/[^0-9.]/g, ''));
+    const hasBillion = target.includes('B');
+    const hasMillion = target.includes('M');
+    const hasPlus = target.includes('+');
+    let start = 0;
+    const duration = 2000;
+    const step = (timestamp) => {
+      if (!start) start = timestamp;
+      const progress = Math.min((timestamp - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = eased * numTarget;
+      let display = isDecimal ? current.toFixed(1) : Math.floor(current);
+      el.textContent = prefix + display + (hasBillion ? 'B' : hasMillion ? 'M' : '') + (hasPlus ? '+' : '') + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  const statNums = document.querySelectorAll('.stat-num');
+  const heroObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        statNums.forEach(el => {
+          const text = el.textContent;
+          if (text.includes('$')) animateCounter(el, text.replace('$', ''), '$');
+          else animateCounter(el, text);
+        });
+        heroObserver.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  heroObserver.observe(document.querySelector('.hero-stats'));
+</script>
+</body>
+</html>
